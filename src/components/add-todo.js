@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useLocation, useNavigate} from "react-router-dom";
 import TodoDataService from '../services/todos';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -47,7 +47,7 @@ const AddTodo = props => {
             TodoDataService.updateTodo(location.state.currentTodo.id, data, props.token)
                 .then(response => {
                     setSubmitted(true);
-                    console.log(response.data);
+                    console.log(response.data, "submitted =",submitted);
                     navigate("/");
 
                 })

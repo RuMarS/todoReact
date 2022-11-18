@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import TodoDataService from "../services/todos";
 import {Link} from "react-router-dom";
 
@@ -11,14 +11,9 @@ import moment from 'moment';
 
 const TodosList = props => {
     const [todos, setTodos] = useState([]);
-    const [currentTodo, setCurrentTodo] = useState([]);
+    //const [currentTodo, setCurrentTodo] = useState([]);
 
-    useEffect(()=>{
-        retrieveTodos();
-        //alert("useEffect "+props.token);
-        },[props.token]);
-
-    const retrieveTodos = () => {
+       const retrieveTodos = useCallback( () => {
        // alert("retrieveTodos "+ props.token);
         TodoDataService.getAll(props.token)
             .then(response => {
@@ -29,7 +24,15 @@ const TodosList = props => {
                 console.log("error: "+e);
                // alert("err "+e);
             })
-    }
+    }, [props.token]
+    )
+
+    useEffect(()=>{
+        retrieveTodos();
+        //alert("useEffect "+props.token);
+        },[props.token, retrieveTodos]);
+
+
 
     const deleteTodo = (todoId) =>{
         TodoDataService.deleteTodo(todoId, props.token)

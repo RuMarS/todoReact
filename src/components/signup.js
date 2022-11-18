@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import {FormLabel} from "react-bootstrap";
-import {useNavigate, UseNavigate} from "react-router-dom";
+//import {FormLabel} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
 const Signup = props => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const onChangeUsername = e => {
         const username = e.target.value;
@@ -23,7 +23,7 @@ const Signup = props => {
     const signup = () => {
         props.signup({'username': username, 'password': password});
         //props.history.push("/");
-        history("/todos");
+        navigate("/");
     }
 
     return (
