@@ -23,7 +23,7 @@ const Signup = props => {
     const signup = () => {
         props.signup({'username': username, 'password': password});
         //props.history.push("/");
-        navigate("/");
+        navigate("/todos");
     }
 
     return (

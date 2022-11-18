@@ -23,7 +23,7 @@ const Login = props => {
 
         props.login({username: username, password: password});
        //props.history.push('/');
-        history('/');
+        history('/todos');
     }
 
 
