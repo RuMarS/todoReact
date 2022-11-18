@@ -30,8 +30,8 @@ async function login(user=null){
             setError("");
         })
         .catch(e=>{
-            console.log('login', e);
             setError(e.toString());
+            console.log('login', error);
         });
 }
 
@@ -53,8 +53,8 @@ async function signup(user = null){
             localStorage.setItem('user', user.username);
         })
         .catch(e=>{
-            console.log(e);
             setError(e.toString());
+            console.log(error);
         })
 }
 
@@ -121,5 +121,4 @@ async function signup(user = null){
 }
 
 export default App;
-
 
